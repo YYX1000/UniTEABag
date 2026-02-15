@@ -37,7 +37,7 @@ def generate(arg1, arg2, arg3, UT_CODEKEY_CONST2):
     return bytes(result)
 
 def generate2(arg1, arg2, arg3, UT_CODEKEY_CONST2):
-    temp = arg1 & 0xFFFFFFFF  # Ensure it's a 32-bit value
+    temp = arg1 & 0xFFFFFFFF 
     result = []
     for cnt in range(arg3):
         temp = cnt + (temp ^ UT_CODEKEY_CONST2) & 0xFFFFFFFF
@@ -235,14 +235,13 @@ def decrypt_upk(fname, output_directory=None):
 
         with open(outputinfofile, 'w', encoding='utf-8') as out_file:
             out_file.write(f'Filename: {fname}\n')
-            out_file.write(f'Filetype: {type}\n')
+            out_file.write(f'Filetype: {mytype}\n')
             out_file.write(f'Timestamp: {timestamp}\n')
             out_file.write(f'PackageName: {package_name}\n')
             if used_key1:
                 out_file.write(f'Encver: 1\n')
             if used_key2:
                 out_file.write(f'Encver: 2\n')
-            out_file.write(f'PackageName: {package_name}\n')
             out_file.write(f'Payload size: {size_num}\n')
             out_file.write(f'Seed: {seed.hex()}\n')
             out_file.write(f'Md5-Signature: {md5.hex()}\n')
@@ -261,16 +260,23 @@ def datetime_string_to_little_endian_bytes(date_str):
     
     return timestamp_bytes
 
-def encrypt_upk(folder, seed, package_name, timestamp, enc_version, outfile=None):
+def encrypt_upk(seed, package_name, timestamp, enc_version, outfile=None, folder=None, tarfile=None):
     if outfile is None:
         outputfile = f'{package_name}.upk'
     else:
         outputfile = outfile
+    if folder is None and tarfile is None:
+        print('Need to set atleast folder or tarfile to encrypt')
+        return
     print(f'Building new upk {outputfile}')
     print(f'Seed: {seed}')
     print(f'Packagename: {package_name}')
     print(f'timestamp: {timestamp}')
-    payload = tar_folder(folder)
+    if folder:
+        payload = tar_folder(folder)
+    if tarfile:
+        with open(tarfile, 'rb') as f:
+            payload = f.read()
     seed_bytes = bytes.fromhex(seed)
     key1, key2 = generate_code_key(seed_bytes)
     if enc_version == '1':
@@ -363,6 +369,7 @@ def dec_input_file(fname, extract, extract_to_parent=True, delete_upk=False):
             print(f'[i] Deleted UPK file: {fname}')
         except Exception as e:
             print(f'[!] Failed to delete UPK file {fname}: {e}')
+
 def fast_scandir(dirname):
     subfolders= [f.path for f in os.scandir(dirname) if f.is_dir()]
     for dirname in list(subfolders):
@@ -370,9 +377,11 @@ def fast_scandir(dirname):
     return subfolders
 
 def main():
-    print('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+')
-    print('|     Bin4rys Unitree UPK Tool v1.8     |')
-    print('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+    print('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+    print('|             Bin4rys Unitree UPK Tool v1.8                   |')
+    print('|                shout out to:                                |' \
+    print('| h0stile, todb, AHA, Darknavy, theroboverse and all friends  |')
+    print('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+')
     parser = argparse.ArgumentParser(
                     prog='upk_tool')
     parser.add_argument('-d', '--decrypt', action='store_true', help='Decrypt mode')
@@ -391,6 +400,8 @@ def main():
 
     subparser.add_argument('-f' , '--folder', type=str,
             help="the folder to be encrypted as upk")
+    subparser.add_argument('-tf' , '--tarfile', type=str,
+            help="the tarfile to be encrypted as upk")
 
     subparser = parser.add_mutually_exclusive_group()    
     subparser.add_argument('-info','--infofile', type=str,
@@ -422,6 +433,7 @@ def main():
     if args.decrypt:
         if args.inputfile:
             dec_input_file(args.inputfile, args.extract, not args.extract_to_subfolder, False)
+            print_ascii_art()
         if args.allfiles:
             delete_upk_files = not args.keep_upk
             main_upk_path = args.inputfile
@@ -454,16 +466,21 @@ def main():
                 currfolder = os.getcwd()
                 for file in find_upk_files(currfolder):
                     dec_input_file(file, args.extract, not args.extract_to_subfolder, delete_upk_files)
-            
-        
+            print_ascii_art()
+
     if args.encrypt:
-        if not args.folder:
-            print('You have to provide an folder to encrypt')
+        if not args.folder and not args.tarfile:
+            print('You have to provide an folder or tarfile to encrypt')
             sys.exit(0)
         if not args.infofile and not args.customdata:
             print('You have to use either infofile or customdata')
             sys.exit(0)
-        folder = args.folder
+        folder = None
+        tarfile = None
+        if args.folder:
+            folder = args.folder
+        if args.tarfile:
+            tarfile = args.tarfile
         if args.infofile:
             seed, package_name, timestamp, encver = parse_info(args.infofile)
         if args.customdata:
@@ -476,15 +493,42 @@ def main():
                 timestamp = args.timestamp
             else:
                 timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            outputfile = None
-            if args.outputfile:
-                outputfile = args.outputfile
+        outputfile = None
+        if args.outputfile:
+            outputfile = args.outputfile
 
         if seed is not None and package_name is not None and timestamp is not None:
-            encrypt_upk(folder, seed, package_name, timestamp, encver, outputfile)
+            encrypt_upk(seed, package_name, timestamp, encver, outputfile, folder, tarfile)
+            print_ascii_art()
         else:
             print('Oops, something fucked up....')
 
-    
+def print_ascii_art():
+    art = r"""
+
+            .------.____
+         .-'       \ ___)
+      .-'         \\\
+   .-'        ___  \\)
+.-'          /  (\  |)
+         __  \  ( | |
+        /  \  \__'| |
+       /    \____).-'
+     .'       /   |
+    /     .  /    |
+  .'     / \/     |
+ /      /   \     |
+       /    /    _|_
+       \   /    /\ /\
+        \ /    /__v__\
+         '    |       |
+              |     .#|
+              |#.  .##|
+              |#######|
+              |#######|
+    """
+    print('[!] Teabagging done ....')
+    print(art) 
+
 if __name__ == '__main__':
     main()
