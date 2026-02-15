@@ -379,7 +379,7 @@ def fast_scandir(dirname):
 def main():
     print('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+')
     print('|             Bin4rys Unitree UPK Tool v1.8                   |')
-    print('|                shout out to:                                |' \
+    print('|                shout out to:                                |')
     print('| h0stile, todb, AHA, Darknavy, theroboverse and all friends  |')
     print('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+')
     parser = argparse.ArgumentParser(
