@@ -1,5 +1,5 @@
 # UniTEABag
-The saga continues .... (also check out UniPwn: https://github.com/Bin4ry/UniPwn)
+The saga continues .... (also check out UniPwn: [https://github.com/Bin4ry/UniPwn)](https://github.com/Bin4ry/UniPwn)
 
 A Python tool for decrypting and encrypting Unitree UPK firmware update files
 
@@ -8,7 +8,9 @@ A Python tool for decrypting and encrypting Unitree UPK firmware update files
 UniTEABag is a utility designed to work with Unitree robot firmware UPK files. It can decrypt existing UPK packages to extract their contents, as well as create new UPK files from tar archives or folders.
 
 ## CVE
-CVE-2026-1442
+[CVE-2026-1442](https://takeonme.org/cves/cve-2026-1442/)
+
+[GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101](https://takeonme.org/gcves/GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101)
 
 ## File Format
 
