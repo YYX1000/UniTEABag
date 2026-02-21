@@ -12,8 +12,8 @@ publishDate: 1026-02-28T21:13:37-05:00
 # CVE-2026-1442: Unitree UPK files Hard-Coded Key
 
 [AHA!] has discovered an issue with UPK files produced by Unitree, and is
-publishing this disclosure in accordance with AHA!'s standard [disclosure
-policy] today, on $DATE. [CVE-2026-1442] has been assigned to this issue, as has
+publishing this disclosure in accordance with AHA!'s standard [disclosure policy] today,
+on Februrary 28, 2026. [CVE-2026-1442] has been assigned to this issue, as has
 [GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101].
 
 This vulnerability is estimated to have a [CVSSv31] rating of
@@ -144,9 +144,8 @@ hostility to vulnerability disclosure communications.
 [AHA!]: https://takeonme.org/
 [disclosure policy]: https://takeonme.org/cve.html
 [SSVC]: https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc
-[CVSSv3.1]: https://www.first.org/cvss/calculator/3.1
-[CC BY-SA 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
+[CVSSv31]: https://www.first.org/cvss/calculator/3.1
 [CVE-321]: https://cwe.mitre.org/data/definitions/321.html
-[UniTEABag]: https://github.com/Bin4ry/UniTEABag/
+[UniTEABag]: https://github.com/Bin4ry/UniTEABag
 [CVE-2026-1442]: https://takeonme.org/cves/CVE-2026-1442.html
 [GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101]: {{< baseurl >}}gcves/GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101
