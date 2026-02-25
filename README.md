@@ -99,7 +99,7 @@ https://firmware-cdn.unitree.com/firmware/g1@motor_module_c_1.0.0.6-172977507048
 
 ## Limitations
 
-While this tool can build valid Unitree Firmware UPK files it does not offer a way to server them to the robot. Unitree send the firmware links to the robots via mqtt. There is currently no ***public**** way to deliver a self-crafted firmware package to the robot. A prior misconfiguration of mqtt ACL which would have allowed for easy firmware devliery is fixed by now. Other Unitree bugs are kept private for now. This tool should however enable more people to conduct security research of this robots by allowing access to the decrypted firmware packages.
+While this tool can build valid Unitree Firmware UPK files it does not offer a way to server them to the robot. Unitree send the firmware links to the robots via mqtt. There is currently no ***public*** way to deliver a self-crafted firmware package to the robot. A prior misconfiguration of mqtt ACL which would have allowed for easy firmware devliery is fixed by now. Other Unitree bugs are kept private for now. This tool should however enable more people to conduct security research of this robots by allowing access to the decrypted firmware packages.
 
 Enjoy Teabagging Unitree with this tool :)
 
