@@ -1,7 +1,11 @@
 # UniTEABag
+
 The saga continues .... (also check out UniPwn: [https://github.com/Bin4ry/UniPwn)](https://github.com/Bin4ry/UniPwn)
 
 A Python tool for decrypting and encrypting Unitree UPK firmware update files
+
+![Meme](meme.jpg)
+
 
 ## Overview
 
@@ -11,6 +15,8 @@ UniTEABag is a utility designed to work with Unitree robot firmware UPK files. I
 [CVE-2026-1442](https://takeonme.org/cves/cve-2026-1442/)
 
 [GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101](https://takeonme.org/gcves/GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101)
+
+See [AHA-Disclosure](aha-disclosure.md)
 
 ## File Format
 
@@ -97,9 +103,12 @@ https://firmware-cdn.unitree.com/firmware/g1@motor_module_c_1.0.0.6-172977507048
 
 While this tool can build valid Unitree Firmware UPK files it does not offer a way to server them to the robot. Unitree send the firmware links to the robots via mqtt. There is currently no public way to deliver a self-crafter firmware package to the robot. A prior misconfiguration of mqtt ACL which would have allowed for easy firmware devliery is fixed by now. Other Unitree bugs are kept private for now. This tool should however enable more people to conduct security research of this robots by allowing access to the decrypted firmware packages.
 
+Enjoy Teabagging Unitree with this tool :)
+
 ## Disclaimer
 
 This tool is for educational and research purposes only. Use responsibly and ensure you have proper authorization to work with firmware files.
+Due to previous frustations in the responsible disclosure process with Unitree this vulnerability was released without informing the manufacturer. The manufacturer showed in previous conversations that they have no interest in talking to me by removing me from the email chain several times. 
 
 ## Credits
 

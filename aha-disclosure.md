@@ -4,10 +4,9 @@ aliases: ["/cves/CVE-2026-1442.html"]
 aliases:
   - /cves/CVE-2026-1442.html
   - /gcves/GCVE-1337-2025-00000000000000000000000000000000000000000000000001111111111110101111111111000000000000000000000000000000000000000000000000000000101
-publishDate: 1026-02-28T21:13:37-05:00
+publishDate: 2026-02-26T17:13:37-05:00
 
 ---
-*NOTE: Update the `publishDate` be correct. Future dates get all fucky in Hugo.*
 
 # CVE-2026-1442: Unitree UPK files Hard-Coded Key
 
