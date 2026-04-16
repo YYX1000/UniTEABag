@@ -1,4 +1,4 @@
-<img width="2559" height="1527" alt="图片" src="https://github.com/user-attachments/assets/94537fde-74c6-4c45-8fff-e9571b32eb90" /># UniTEABag
+# UniTEABag
 
 The saga continues .... (also check out UniPwn: [https://github.com/Bin4ry/UniPwn)](https://github.com/Bin4ry/UniPwn)
 
